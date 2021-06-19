@@ -1,5 +1,5 @@
 import 'source-map-support/register'
-import express, { Express, Request, Response } from 'express'
+import express, { Express } from 'express'
 
 import { Server } from 'http'
 

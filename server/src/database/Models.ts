@@ -12,3 +12,5 @@ export default (sequelize: Sequelize) => {
     { tableName: 'servers', sequelize: sequelize }
   )
 }
+
+
