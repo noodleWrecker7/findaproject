@@ -1,18 +1,20 @@
-import { DataTypes, Model, Sequelize } from "sequelize";
+import { DataTypes, Model, Sequelize } from 'sequelize';
 
 export class Tag extends Model {
-  name!: string
+  name!: string;
   /**Hex string for colour*/
-  colour!: string
+  colour!: string;
+  id!: number;
 }
 
 export default (sequelize: Sequelize) => {
   Tag.init(
     {
-      name: {type: DataTypes.STRING, allowNull: false},
-      colour: {type: DataTypes.STRING, allowNull: false},
+      name: { type: DataTypes.STRING, allowNull: false },
+      colour: { type: DataTypes.STRING, allowNull: false },
+      id: { type: DataTypes.INTEGER, unique: true, primaryKey: true, autoIncrement: true }
     },
-    {tableName: 'tags', sequelize: sequelize})
-  console.log(Tag)
+    { tableName: 'tags', sequelize: sequelize });
+  console.log(Tag);
 
 }

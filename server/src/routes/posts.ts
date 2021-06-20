@@ -6,10 +6,10 @@ export default (app: Express) => {
   app.use("/posts", postsRouter)
 }
 
-postsRouter.all("*", (req,res,next)=>{
+postsRouter.all("*", (req, res, next) => {
   console.log("Request received")
   next()
-} )
+})
 // GET items
 postsRouter.get('/', posts.findAll)
 

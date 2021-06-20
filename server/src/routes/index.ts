@@ -1,8 +1,8 @@
 import { Express } from "express";
-import postsRouter from "./postsRouter";
+import postsRouter from "./posts";
 import { Sequelize } from "sequelize";
 
-export default (app:Express)=>{
+export default (app: Express) => {
   // all routes files need to be called here
   postsRouter(app)
 }
