@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "incremental": true,
+    "incremental": false,
     "module": "commonjs",
     "moduleResolution": "node",
-    "target": "es5",
+    "target": "es6",
     "sourceMap": true,
     "rootDir": "src",
     "outDir": "out",
