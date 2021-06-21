@@ -16,25 +16,20 @@ passport.use(
   ) {
     User.findOne({ where: { username } })
       .then((user) => {
-        console.log(user);
         if (!user) {
-          console.log("wrong username");
           return done(null, false, { message: "Incorrect username." });
         }
         if (!user.hash || !user.salt) {
-          console.log("no password found for account");
           return done(null, false, {
             message: "No password found for this account.",
           });
         }
         if (!doesPasswordMatchHash(password, user.hash, user.salt)) {
-          console.log("password wrong");
           return done(null, false, { message: "Incorrect password." });
         }
         return done(null, user);
       })
       .catch((err) => {
-        console.log("caught error in promise");
         return done(err);
       });
   })
@@ -67,7 +62,6 @@ const authRouter = express.Router();
 authRouter.post(
   "/login",
   passport.authenticate("local", {
-    failureRedirect: "/auth/loginfailed",
     failureFlash: false,
     failureMessage: "Failed to authenticate",
   }),

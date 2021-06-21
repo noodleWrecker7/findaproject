@@ -4,7 +4,7 @@ import { Request, Response } from "express";
 
 export async function localSignup(req: Request, res: Response) {
   let username = req.body.username;
-  let password = req.body.password;
+  let password: string = req.body.password;
   let usertemp = await User.findOne({ where: { username } });
   if (usertemp) {
     return res.status(403).send("That name is taken");
@@ -22,7 +22,7 @@ export async function localSignup(req: Request, res: Response) {
 function validatePassword(password: string): boolean {
   return (
     password.match(
-      /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,30}$/
     ) != null
   );
 }

@@ -7,11 +7,22 @@ import { User } from "../database/Models/User";
  * Controller Definitions
  */
 export async function findAll(req: Request, res: Response) {
-  let posts = await Post.findAll({ include: [Tag, User] });
+  let posts = await Post.findAll({
+    include: [{ model: User, attributes: ["username", "id"] }, Tag],
+  });
   res.status(200).json(posts);
 }
 
-export async function findOne(req: Request, res: Response) {}
+export async function findOne(req: Request, res: Response) {
+  let post = await Post.findOne({
+    where: { id: req.params.id },
+    include: [{ model: User, attributes: ["username", "id"] }, Tag],
+  });
+  if (!post) {
+    return res.status(404).send("Not found");
+  }
+  res.status(200).json(post);
+}
 
 /**body: { author, content, title, tags: [ IDs ] }*/
 export async function create(req: Request, res: Response) {
