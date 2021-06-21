@@ -12,6 +12,7 @@
     "noImplicitAny": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "removeComments": true,
     "types": [
       "node"
     ],
@@ -19,7 +20,6 @@
       "ES2020",
       "DOM"
     ],
-    "resolveJsonModule": true
   },
   "exclude": [
     "node_modules",

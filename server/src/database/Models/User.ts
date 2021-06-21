@@ -2,8 +2,8 @@ import { DataTypes, Model, Sequelize } from "sequelize";
 
 export class User extends Model {
   username!: string
-  hash!: string
-  salt!: string
+  hash?: string
+  salt?: string
   id!: number
 }
 
