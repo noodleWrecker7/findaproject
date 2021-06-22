@@ -17,9 +17,9 @@ const app: Express = express();
 const http = new Server(app);
 app.set("trust proxy", 1); // trust first
 app.use(cors({ origin: "*" }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ type: "application/json" }));
 // app.use(bodyParser.raw());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ type: "application/x-www-form-urlencoded" }));
 app.use(
   expressSession({
     secret: randomBytes(8).toString("hex"),

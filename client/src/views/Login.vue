@@ -71,10 +71,18 @@ export default {
   methods: {
     onSubmit() {
       this.$refs.form.validate((valid) => {
-        if (valid) {
+        if (valid || !valid) {
           alert('submit!');
-          console.log(this.apiroot);
+          console.log(this.$store.state.apiroot);
           // todo login endpoint etc
+
+          this.request('/auth/login', 'POST', {
+            username: 'testaccount3',
+            password: 'testT123&'
+          }).then((response) => {
+            console.log(response);
+            this.request('/users/me', 'GET');
+          });
         } else {
           console.log('error submit!!');
           return false;
