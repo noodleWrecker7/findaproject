@@ -1,5 +1,6 @@
 import { DataTypes, Model, Sequelize } from 'sequelize';
 
+/**Individual tags that can be applied to posts*/
 export class Tag extends Model {
   name!: string;
   /**Hex string for colour*/
@@ -12,9 +13,14 @@ export default (sequelize: Sequelize) => {
     {
       name: { type: DataTypes.STRING, allowNull: false },
       colour: { type: DataTypes.STRING, allowNull: false },
-      id: { type: DataTypes.INTEGER, unique: true, primaryKey: true, autoIncrement: true }
+      id: {
+        type: DataTypes.INTEGER,
+        unique: true,
+        primaryKey: true,
+        autoIncrement: true,
+      },
     },
-    { tableName: 'tags', sequelize: sequelize });
+    { tableName: "tags", sequelize: sequelize }
+  );
   console.log(Tag);
-
-}
+};

@@ -1,6 +1,5 @@
 import { Post, Tag } from "../database";
 import { Request, Response } from "express";
-import postsRouter from "../routes/posts";
 import { User } from "../database/Models/User";
 
 /**
@@ -29,7 +28,6 @@ export async function create(req: Request, res: Response) {
   if (!req.user) {
     return res.status(401).send("Must be logged in to create posts");
   }
-  // let author = req.body.author;
   let author = req.user;
   let content = req.body.content;
   let title = req.body.title;

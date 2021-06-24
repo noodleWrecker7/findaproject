@@ -27,6 +27,7 @@ function validatePassword(password: string): boolean {
   );
 }
 
+/**Responds with object of currently in session user*/
 export async function findMe(req: Request, res: Response) {
   console.log("find me");
   if (!req.user) {

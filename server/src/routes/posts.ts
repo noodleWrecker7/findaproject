@@ -1,27 +1,21 @@
 import express, { Express } from "express";
-import * as posts from '../controllers/posts'
+import * as posts from "../controllers/posts";
 
 const postsRouter = express.Router();
 export default (app: Express) => {
-  app.use("/posts", postsRouter)
-}
+  app.use("/posts", postsRouter);
+};
 
 postsRouter.all("*", (req, res, next) => {
-  console.log("Request received")
-  next()
-})
-// GET items
-postsRouter.get('/', posts.findAll)
+  console.log("Request received");
+  next();
+});
+postsRouter.get("/", posts.findAll);
 
-// GET items/:id
-postsRouter.get('/:id', posts.findOne)
+postsRouter.get("/:id", posts.findOne);
 
-// POST items
-postsRouter.post('/', posts.create)
+postsRouter.post("/", posts.create);
 
-// PUT items/:id
-postsRouter.put('/:id', posts.update)
+postsRouter.put("/:id", posts.update);
 
-// DELETE items/:id
-
-postsRouter.delete('/:id', posts.remove)
+postsRouter.delete("/:id", posts.remove);

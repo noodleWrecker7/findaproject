@@ -20,7 +20,6 @@ let origin = process.env.originurl || "http://localhost:8080";
 app.use(cors({ origin, credentials: true }));
 
 app.use(bodyParser.json({ type: "application/json" }));
-// app.use(bodyParser.raw());
 app.use(bodyParser.urlencoded({ type: "application/x-www-form-urlencoded" }));
 app.use(
   expressSession({

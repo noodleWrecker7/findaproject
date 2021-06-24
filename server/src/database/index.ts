@@ -8,9 +8,7 @@ export function initDB() {
     logging: false,
     storage: "database.sqlite",
   });
-  // export default async function dbInit() {
   modelsInit(db);
-  // }
 
   console.log("we here do");
 

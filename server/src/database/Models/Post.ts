@@ -1,5 +1,6 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
 
+/**Stores information about individual posts*/
 export class Post extends Model {
   content!: string;
   title!: string;
@@ -20,5 +21,4 @@ export default (sequelize: Sequelize) => {
     },
     { tableName: "posts", sequelize: sequelize }
   );
-  // Post.sync({ force: true });
 };
