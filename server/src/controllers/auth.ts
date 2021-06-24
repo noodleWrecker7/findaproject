@@ -26,3 +26,13 @@ function validatePassword(password: string): boolean {
     ) != null
   );
 }
+
+export async function findMe(req: Request, res: Response) {
+  console.log("find me");
+  if (!req.user) {
+    res.status(401).json("You are not logged in!");
+    return;
+  }
+  console.log("find me ");
+  res.json(req.user);
+}

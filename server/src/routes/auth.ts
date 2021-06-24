@@ -1,5 +1,4 @@
 import express, { Express } from "express";
-import expressSession from "express-session";
 import * as auth from "../controllers/auth";
 import { User } from "../database/Models/User";
 
@@ -67,7 +66,7 @@ authRouter.post(
   }),
   (req, res) => {
     console.log("posted login");
-    res.send("Success");
+    res.status(200).send();
   }
 );
 
@@ -80,6 +79,8 @@ authRouter.post(
     failureFlash: true,
   })
 );
+
+authRouter.get("/me", auth.findMe);
 
 export default (app: Express) => {
   app.use(passport.initialize());

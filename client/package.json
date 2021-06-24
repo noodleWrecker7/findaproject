@@ -12,6 +12,7 @@
     "@babel/runtime": "^7.14.6",
     "@vue/cli": "^4.5.13",
     "ant-design-vue": "^1.7.5",
+    "axios": "^0.21.1",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "core-js": "^3.15.0",
     "vue": "^2.6.11",

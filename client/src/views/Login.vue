@@ -34,7 +34,9 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import axios from 'axios';
+
 export default {
   name: 'login',
   data() {
@@ -48,6 +50,7 @@ export default {
         password: ''
       },
       rules: {
+        // todo remove these rules, they are really for a register form not a login
         username: [
           {
             required: true,
@@ -70,19 +73,21 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.$refs.form.validate((valid) => {
-        if (valid || !valid) {
-          alert('submit!');
-          console.log(this.$store.state.apiroot);
-          // todo login endpoint etc
-
-          this.request('/auth/login', 'POST', {
-            username: 'testaccount3',
-            password: 'testT123&'
-          }).then((response) => {
-            console.log(response);
-            this.request('/users/me', 'GET');
-          });
+      this.$refs.form.validate(async (valid) => {
+        if (valid) {
+          await axios
+            .post('/auth/login', {
+              username: this.formData.username,
+              password: this.formData.password
+            })
+            .catch((e) => {
+              alert(
+                // todo make it one of those fancy built in error messages on the page (i think ant design has them)
+                'Error logging in.\nCode: ' +
+                  e.response.status +
+                  ' returned from server'
+              );
+            });
         } else {
           console.log('error submit!!');
           return false;
