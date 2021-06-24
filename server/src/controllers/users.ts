@@ -1,5 +1,5 @@
-import { User } from "../database/Models/User";
-import { Request, Response } from "express";
+import { User } from '../database/Models/User';
+import { Request, Response } from 'express';
 
 /**
  * Controller Definitions
@@ -17,7 +17,7 @@ export async function findOne(req: Request, res: Response) {
 }
 
 export async function findAll(req: Request, res: Response) {
-  let users = await User.findAll({ attributes: { exclude: 'hash'",'salt'"] } });
+  let users = await User.findAll({ attributes: { exclude: ["hash", "salt"] } });
   res.status(200).json(users);
   console.log(req.user);
 }
